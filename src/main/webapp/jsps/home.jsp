@@ -11,6 +11,7 @@
 <body>
 <h1 align="center">Welcome to Uptime Career. Pune Maharasthra,India</h1>
 <h1 align="center"> In Uptime Career we are Learning Devops with Real Time scenarios every weekday at 7 AM.</h1>
+<h1 align="center"> Today we learn about the build triggers(pool scm/build periordically/github webhook)..</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
