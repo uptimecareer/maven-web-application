@@ -2,6 +2,10 @@ node{
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
 def mavenHome = tool name: 'maven-3.9.6'
 
+    echo "The Job name is: ${env.JOB_NAME}" 
+    echo "The Build numebr is: ${env.BUILD_NUMBER}"
+    echo "The node name is: ${env.NODE_NAME}"
+
 stage('CheckoutCode'){
 git branch: 'development', changelog: false, credentialsId: '0f3d9fac-a704-4411-8b4a-d533f774307f', poll: false, url: 'https://github.com/uptimecareer/maven-web-application.git'
 }
