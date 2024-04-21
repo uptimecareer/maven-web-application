@@ -29,6 +29,6 @@ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.
 }
 
 stage('SendEmailNotification'){
-mail bcc: '', body: 'Project: ${env.JOB_NAME}</br> Build Number: ${env.BUILD_NUMBER}</br> URL:${env.BUILD_URL}', cc: '', from: '', replyTo: '', subject: '${currentBuild.result}', to: 'uptimecareer.gmail.com'
+mail bcc: '', """body: 'Project: ${env.JOB_NAME}</br> Build Number: ${env.BUILD_NUMBER}</br> URL:${env.BUILD_URL}', cc: '', from: '', replyTo: '', subject: '${currentBuild.result}'""", to: 'uptimecareer.gmail.com'
 }
 }
