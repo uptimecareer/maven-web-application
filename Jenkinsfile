@@ -29,11 +29,7 @@ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.
 }
 
 Stage('SendEmailNotification'){
-mail bcc: '', body: '''Hi,
-
-Welcome to Uptime Career.
-
-Regards,
-Uptime Career''', cc: '', from: '', replyTo: '', subject: 'Build is over..!', to: 'uptimecareer@gmail.com'
+mail bcc: '', body: '''Regards,
+Uptime Career''', cc: '', from: '', replyTo: '', subject: 'Build Over', to: 'uptimecareer@gmail.com'
 }
 }
