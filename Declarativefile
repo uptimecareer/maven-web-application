@@ -6,13 +6,6 @@ tools{
 maven 'maven-3.9.6'
 }
 
-/*
-echo "The Job name is: ${env.JOB_NAME}"
-echo "The Nod ename is: ${env.NODE_NAME}"
-echo "The Build Number is: ${env.BUILD_NUMBER}"
-echo "The Jenkins Home directory is: ${JENKINS_HOME}"
-*/
-
 //Checkout code
 stages{
  stage('CheckOuteCode'){
@@ -53,10 +46,10 @@ stage('DeployAppIntoTomcat'){
 
 post {
   success {
-    echo "Pipeline build Successful.."
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Test Email-SUCCESS', to: 'uptimecareer@gmail.com'
   }
   failure {
-    echo "Pipeline failed..."
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Test Email-Failed', to: 'uptimecareer@gmail.com'
   }
 } 
 }//pipeline closing
