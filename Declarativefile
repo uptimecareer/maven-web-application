@@ -53,10 +53,10 @@ stage('DeployAppIntoTomcat'){
 
 post {
   success {
-    Pipeline build Successful..
+    echo "Pipeline build Successful.."
   }
   failure {
-    Pipeline failed...
+    echo "Pipeline failed..."
   }
 } 
 }//pipeline closing
