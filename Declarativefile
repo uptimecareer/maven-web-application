@@ -46,10 +46,10 @@ stage('DeployAppIntoTomcat'){
 
 post {
   success {
-    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Test Email-SUCCESS', to: 'uptimecareer@gmail.com'
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Build Status-SUCCESS', to: 'uptimecareer@gmail.com'
   }
   failure {
-    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Test Email-Failed', to: 'uptimecareer@gmail.com'
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Build Status-FAILED', to: 'uptimecareer@gmail.com'
   }
 } 
 }//pipeline closing
