@@ -27,7 +27,7 @@ stages{
  }
  
  // Upload Artifcats into Nexus
- stage('UploadArtifcatsIntoNexus'){
+ Stage('UploadArtifcatsIntoNexus'){
  steps{
  sh "mvn clean deploy"
  }
