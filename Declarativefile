@@ -47,7 +47,6 @@ stage('DeployAppIntoTomcat'){
 }
 }
  }
-*/
 }//stages closing
 
 /*
