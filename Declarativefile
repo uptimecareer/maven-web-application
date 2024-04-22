@@ -3,7 +3,7 @@ pipeline{
 agent any
 
 tools{
-maven 'maven3.9.6'
+maven 'maven-3.9.6'
 }
 
 echo "The Job name is: ${env.JOB_NAME}"
@@ -16,8 +16,7 @@ echo "The Jenkins Home directory is: ${JENKINS_HOME}"
 stages{
  stage('CheckOuteCode'){
  steps{
-    sendSlackNotifications("STARTED")
- git branch: 'development', credentialsId: 'f4d44680-6f7c-4889-b836-5ce7015057f8', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+ git branch: 'development', changelog: false, credentialsId: '0f3d9fac-a704-4411-8b4a-d533f774307f', poll: false, url: 'https://github.com/uptimecareer/maven-web-application.git'
  }
  }
  //Build
@@ -26,7 +25,6 @@ stages{
  sh "mvn clean package"
  }
  }
-  /*
  //Execute SonarQube Report
  stage('ExecuteSonarQubeReport'){
  steps{
@@ -45,13 +43,14 @@ stages{
 stage('DeployAppIntoTomcat'){
  steps{
   sshagent(['ea56a0ef-94e7-43c1-99e3-d7e0947043a3']) {
-    sh "scp  -o StrictHostKeyChecking=no target/maven-web-application.war   ec2-user@172.31.1.56:/opt/apache-tomcat-9.0.86/webapps/"
+    sh "scp  -o StrictHostKeyChecking=no target/maven-web-application.war   ec2-user@3.84.121.239:/opt/tomcat9/webapps"
 }
 }
  }
 */
 }//stages closing
 
+/*
 post {
   success {
     sendSlackNotifications(currentBuild.result)
@@ -59,7 +58,7 @@ post {
   failure {
     sendSlackNotifications(currentBuild.result)
   }
-}
+} */
 }//pipeline closing
 
 
