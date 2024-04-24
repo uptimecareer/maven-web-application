@@ -1,1 +1,57 @@
+pipeline{
 
+agent any
+
+tools{
+maven 'maven-3.9.6'
+}
+
+//Checkout code
+stages{
+ stage('CheckOuteCode'){
+ steps{
+ git branch: 'development', changelog: false, credentialsId: '0f3d9fac-a704-4411-8b4a-d533f774307f', poll: false, url: 'https://github.com/uptimecareer/maven-web-application.git'
+ }
+ }
+ //Build
+ stage('Build'){
+ steps{
+ sh "mvn clean package"
+ }
+ }
+ //Execute SonarQube Report
+ stage('ExecuteSonarQubeReport'){
+ steps{
+ sh "mvn clean sonar:sonar"
+ }
+ }
+ /*
+ // Upload Artifcats into Nexus
+ Stage('UploadArtifcatsIntoNexus'){
+ steps{
+ sh "mvn clean deploy"
+ }
+ }
+
+//Deploy App into Tomcat Server
+stage('DeployAppIntoTomcat'){
+ steps{
+  sshagent(['eb7b5b5b-ab0b-4b5d-8ac6-3a3c31e5607b1']) {
+    sh "scp  -o StrictHostKeyChecking=no target/maven-web-application.war   ec2-user@3.84.121.239:/opt/tomcat9/webapps"
+}
+}
+ }
+*/
+}//stages closing
+
+/*
+post {
+  success {
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Build Status-SUCCESS', to: 'uptimecareer@gmail.com'
+  }
+  failure {
+    mail bcc: '', body: 'Email Sentout from the Jenkins', cc: '', from: '', replyTo: '', subject: 'Build Status-FAILED', to: 'uptimecareer@gmail.com'
+  }
+} 
+*/
+}//pipeline closing
