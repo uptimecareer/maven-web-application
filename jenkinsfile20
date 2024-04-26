@@ -1,6 +1,6 @@
 node{
 
- properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
+// properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
  def mavenHome  = tool name: 'maven-3.9.6'
     
  stage('CheckoutCode'){
@@ -15,7 +15,7 @@ sh "${mavenHome}/bin/mvn clean package"
 stage('SonarQubeReport'){
 sh "${mavenHome}/bin/mvn clean sonar:sonar"
 }
-
+/*
 stage('UploadArtifactsIntoNexus'){
 sh "${mavenHome}/bin/mvn clean deploy"
 }
@@ -26,5 +26,5 @@ sshagent(['7084ec9f-84b1-4a2f-af26-24000af08253']) {
 }
 
 }
-
+*/
 }
