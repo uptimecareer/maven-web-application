@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>uptime career Nexus Repository</name>
-	      <url>http://18.217.235.8:8081/repository/flipkart-releases/</url>
+	      <url>http://18.221.187.105:8081/repository/flipkart-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Uptime Career Snapshot Nexus Repository </name>
-	      <url>http://18.217.235.8:8081/repository/flipkart-snapshots/</url>
+	      <url>http://18.221.187.105:8081/repository/flipkart-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
