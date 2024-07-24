@@ -104,7 +104,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Uptime Career Snapshot Nexus Repository </name>
-	      <url>http://18.217.235.8:8081/repository/maven-snapshots/</url>
+	      <url>http://18.217.235.8:8081/repository/flipkart-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
