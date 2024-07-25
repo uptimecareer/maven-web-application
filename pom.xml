@@ -15,7 +15,7 @@
 		<name>Uptime Career</name>
 		<url>http://uptimecareer.com/</url>
 	</organization>
-
+           <!-- Demo of Github Webhook --> 
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>5.1.2.RELEASE</spring.version>
@@ -26,7 +26,7 @@
 		<sonar.password>admin123</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- demo -->
+		
 
 	</properties>
 
