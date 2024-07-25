@@ -15,7 +15,7 @@
 		<name>Uptime Career</name>
 		<url>http://uptimecareer.com/</url>
 	</organization>
-           <!-- Demo of Github Webhook --> 
+           <!-- Demo of Github Webhooks --> 
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>5.1.2.RELEASE</spring.version>
