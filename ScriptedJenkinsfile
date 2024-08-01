@@ -1,0 +1,20 @@
+node{
+ def mavenHome = tool name: 'maven-3.9.8'
+ stage('CheckoutCode'){
+     git branch: 'development', changelog: false, credentialsId: 'a2cb14aa-155e-4179-bbc1-26b0c03732c7', poll: true, url: 'https://github.com/uptimecareer/maven-web-application.git'
+ }   
+ stage('BuildArtifiact'){
+   sh "${mavenHome}/bin/mvn clean package"
+ }
+ stage('SonarQubeReport'){
+ sh "${mavenHome}/bin/mvn sonar:sonar"
+ }
+ stage('UploadArtifactIntoNexus'){
+ sh "${mavenHome}/bin/mvn clean deploy"
+ }
+ stage('DeployArtifactintoTomcat'){
+ sshagent(['228f46a5-8850-4812-9d4a-b7645fde6394']) {
+ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.128.78.165:/opt/tomcat9/webapps/"  
+ }
+}
+}
