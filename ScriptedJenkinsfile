@@ -1,5 +1,9 @@
 node{
  def mavenHome = tool name: 'maven-3.9.8'
+    echo "The Job name is: ${env.JOB_NAME}" 
+    echo "The Build numebr is: ${env.BUILD_NUMBER}"
+    echo "The node name is: ${env.NODE_NAME}"
+    echo "The Workspace is: ${env.WORKSPACE}"
  stage('CheckoutCode'){
      git branch: 'development', changelog: false, credentialsId: 'a2cb14aa-155e-4179-bbc1-26b0c03732c7', poll: true, url: 'https://github.com/uptimecareer/maven-web-application.git'
  }   
@@ -13,8 +17,12 @@ node{
  sh "${mavenHome}/bin/mvn clean deploy"
  }
  stage('DeployArtifactintoTomcat'){
- sshagent(['228f46a5-8850-4812-9d4a-b7645fde6394']) {
- sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.128.78.165:/opt/tomcat9/webapps/"  
+ sshagent(['547bf40f-c05e-47c6-b43b-d0e79c6116e1']) {
+ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.21.105.43:/opt/tomcat9/webapps/"  
  }
 }
+ stage('Email Notification'){
+  mail bcc: '', body: '''Regards,
+  Uptime Career''', cc: '', from: '', replyTo: '', subject: 'Build Over', to: 'uptimecareer@gmail.com'
+ }
 }
