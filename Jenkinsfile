@@ -13,7 +13,7 @@ git branch: 'development', changelog: false, credentialsId: '0f3d9fac-a704-4411-
 stage('BuildArtifact'){
  sh "${mavenHome}/bin/mvn clean package"
 }
-
+/*
 stage('SonarQubeReport'){
  sh "${mavenHome}/bin/mvn sonar:sonar"
 }
@@ -32,4 +32,5 @@ stage('SendEmailNotification'){
 mail bcc: '', body: '''Regards,
 Uptime Career''', cc: '', from: '', replyTo: '', subject: 'Build Over', to: 'uptimecareer@gmail.com'
 }
+*/
 }
